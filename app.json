@@ -24,9 +24,9 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
+      "supportsTablet": false,
       "bundleIdentifier": "net.votepurchase.hinpyoukai",
-      "buildNumber": "1",
+      "buildNumber": "2",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "このアプリはマイクを使用します",
         "NSCameraUsageDescription": "このアプリは画像解析のために写真ライブラリを使用します",
