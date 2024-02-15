@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-boilerplate",
-    "slug": "react-native-boilerplate",
+    "name": "品評会",
+    "slug": "hinpyoukai",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -17,28 +17,34 @@
     },
     "updates": {
       "enabled": true,
-      "fallbackToCacheTimeout": 10000
+      "fallbackToCacheTimeout": 10000,
+      "url": "https://u.expo.dev/9a87a3a9-f7bd-4ba3-8a22-4ee1157c0c1d"
     },
     "assetBundlePatterns": [
       "**/*"
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "reactnative.expo.boilerplate",
-      "buildNumber": "1.0.0",
+      "bundleIdentifier": "net.votepurchase.hinpyoukai",
+      "buildNumber": "1",
       "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "Use the photo library to change your avatar.",
+        "NSMicrophoneUsageDescription": "このアプリはマイクを使用します",
+        "NSCameraUsageDescription": "このアプリは画像解析のために写真ライブラリを使用します",
+        "NSPhotoLibraryAddUsageDescription": "このアプリは画像を保存するために写真ライブラリを使用します",
+        "NSPhotoLibraryUsageDescription": "このアプリは画像解析のために写真ライブラリを使用します",
         "CFBundleDevelopmentRegion": "ja_JP"
       },
       "userInterfaceStyle": "automatic"
     },
     "android": {
-      "package": "reactnative.expo.boilerplate",
+      "package": "net.votepurchase.hinpyoukai",
       "versionCode": 1,
       "userInterfaceStyle": "automatic",
       "permissions": [
         "VIBRATE",
-        "CAMERA"
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE"
       ]
     },
     "packagerOpts": {
@@ -56,6 +62,11 @@
     },
     "plugins": [
       "expo-font"
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "9a87a3a9-f7bd-4ba3-8a22-4ee1157c0c1d"
+      }
+    }
   }
 }

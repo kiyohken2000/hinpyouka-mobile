@@ -1,35 +1,27 @@
 import React from 'react'
-import { createStackNavigator } from '@react-navigation/stack'
+import { createStackNavigator, TransitionPresets } from '@react-navigation/stack'
 import { navigationProps } from './navigationProps/navigationProps'
 import GradientHeader from '../../../components/GradientHeader'
 
-import Home from '../../../scenes/home/Home'
-import Details from '../../../scenes/details/Details'
-import Menu from '../../../scenes/menu/Menu'
+import Hinpyoukai from '../../../scenes/hinpyoukai/Hinpyoukai'
+import HinpyoukaiResult from '../../../scenes/hinpyoukaiResult/HinpyoukaiResult'
+
+import { version } from '../../../config'
 
 const Stack = createStackNavigator()
 
 export const HomeStacks = () => {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Hinpyoukai"
       screenOptions={navigationProps}
     >
       <Stack.Screen
-        name="Home"
-        component={Home}
+        name="Hinpyoukai"
+        component={Hinpyoukai}
         options={({ navigation }) => ({
-          title: 'Home',
-          headerShown: false,
-          headerBackTitleVisible: false,
-          headerBackground: () => <GradientHeader />,
-        })}
-      />
-      <Stack.Screen
-        name="Details"
-        component={Details}
-        options={({ navigation }) => ({
-          title: 'Details',
+          title: `version ${version}`,
+          headerShown: true,
           headerBackTitleVisible: false,
           headerBackground: () => <GradientHeader />,
         })}
@@ -37,14 +29,17 @@ export const HomeStacks = () => {
       <Stack.Group
         screenOptions={{
           presentation: 'modal',
-          headerShown: false
+          headerShown: false,
+          gestureEnabled: true,
+          cardOverlayEnabled: true,
+          ...TransitionPresets.ModalPresentationIOS,
         }}
       >
         <Stack.Screen
-          name="Menu"
-          component={Menu}
+          name="HinpyoukaiResult"
+          component={HinpyoukaiResult}
           options={({ navigation }) => ({
-            title: 'Menu',
+            title: 'HinpyoukaiResult',
             headerBackTitleVisible: false,
             headerBackground: () => <GradientHeader />,
           })}
