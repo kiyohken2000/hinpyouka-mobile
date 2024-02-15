@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import ScreenTemplate from "../../components/ScreenTemplate";
 import Button from "../../components/Button";
@@ -15,20 +15,25 @@ export default function HinpyoukaiResult() {
   const navigation = useNavigation()
   const [isLoading, setIsLoading] = useState(false)
   const { imageResult } = route.params
+  const [imageSource, setImageSource] = useState(imageResult)
+
+  useEffect(() => {
+    setImageSource(imageResult)
+  }, [imageResult])
 
   const onBackPress = () => {
     navigation.goBack()
   }
 
   const onImagePress = async() => {
-    await Clipboard.setStringAsync(imageResult);
+    await Clipboard.setStringAsync(imageSource);
     showToast({title: 'コピーしました', body: ''})
   }
 
   const onSavePress = async() => {
     setIsLoading(true)
     const fileName = `${moment().unix()}.jpg`
-    await saveImage({url: imageResult, fileName})
+    await saveImage({url: imageSource, fileName})
     setIsLoading(false)
   }
 
@@ -36,7 +41,7 @@ export default function HinpyoukaiResult() {
     <ScreenTemplate>
       <View style={styles.container}>
         <RenderImage
-          imagePath={imageResult}
+          imagePath={imageSource}
           onPress={onImagePress}
         />
         <View style={styles.contentContainer}>
