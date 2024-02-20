@@ -9,7 +9,7 @@ const uploadImgur = async({imagePath}) => {
     })
     const { data } = await axios.post(
       endpoints.imgur,
-      {image: base64strings},
+      {image: base64strings, type: 'base64'},
       {
         headers: {
           Authorization: `Client-ID ${imgurKey.client_id}`
