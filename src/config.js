@@ -24,6 +24,6 @@ const imgurKey2 = {
   client_secret: '04094166a07009ec5b3da3282ef8fa6265dd6840'
 }
 
-const version = '1.0.2'
+const version = '1.0.3'
 
 export { dummyUser, isAutoLogin, endpoints, imgurKey, headers, version }
