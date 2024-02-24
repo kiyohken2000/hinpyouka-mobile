@@ -1,3 +1,4 @@
+```
 eas update:configure
 eas build:configure
 
@@ -24,3 +25,4 @@ eas device:list
 
 プライバシーポリシー
 https://kiyohken2000.github.io/hinpyoukai-mobile/ja
+```
