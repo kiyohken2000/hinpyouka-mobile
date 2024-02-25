@@ -7,7 +7,7 @@
       "ios",
       "android"
     ],
-    "version": "1.0.4",
+    "version": "1.0.5",
     "orientation": "portrait",
     "icon": "./assets/images/logo-sm.png",
     "splash": {
@@ -26,7 +26,7 @@
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "net.votepurchase.hinpyoukai",
-      "buildNumber": "4",
+      "buildNumber": "5",
       "infoPlist": {
         "NSMicrophoneUsageDescription": "このアプリはマイクを使用します",
         "NSCameraUsageDescription": "このアプリは画像解析のために写真ライブラリを使用します",
@@ -38,7 +38,7 @@
     },
     "android": {
       "package": "net.votepurchase.hinpyoukai",
-      "versionCode": 4,
+      "versionCode": 5,
       "userInterfaceStyle": "automatic",
       "permissions": [
         "VIBRATE",

@@ -9,11 +9,13 @@ import { saveImage } from "../../utils/downloadFunctions";
 import moment from "moment";
 import * as Clipboard from 'expo-clipboard';
 import { showToast } from "../../utils/showToast";
+import ImageView from "react-native-image-viewing";
 
 export default function HinpyoukaiResult() {
   const route = useRoute()
   const navigation = useNavigation()
   const [isLoading, setIsLoading] = useState(false)
+  const [photoVisible, setPhotoVisible] = useState(false)
   const { imageResult } = route.params
   const [imageSource, setImageSource] = useState(imageResult)
 
@@ -25,9 +27,8 @@ export default function HinpyoukaiResult() {
     navigation.goBack()
   }
 
-  const onImagePress = async() => {
-    await Clipboard.setStringAsync(imageSource);
-    showToast({title: 'コピーしました', body: ''})
+  const onImagePress = () => {
+    setPhotoVisible(true)
   }
 
   const onSavePress = async() => {
@@ -35,6 +36,11 @@ export default function HinpyoukaiResult() {
     const fileName = `${moment().unix()}.jpg`
     await saveImage({url: imageSource, fileName})
     setIsLoading(false)
+  }
+
+  const onCopyPress  = async() => {
+    await Clipboard.setStringAsync(imageSource);
+    showToast({title: 'コピーしました', body: ''})
   }
 
   return (
@@ -56,6 +62,16 @@ export default function HinpyoukaiResult() {
           />
           <View style={{paddingVertical: 10}} />
           <Button
+            label='URLをコピー'
+            onPress={onCopyPress}
+            color={colors.purple}
+            disable={false}
+            labelColor={colors.white}
+            labelBold={false}
+            isLoading={false}
+          />
+          <View style={{paddingVertical: 10}} />
+          <Button
             label='戻る'
             onPress={onBackPress}
             color={colors.darkPurple}
@@ -65,6 +81,14 @@ export default function HinpyoukaiResult() {
             isLoading={false}
           />
         </View>
+        <ImageView
+          images={[{uri: imageSource}]}
+          imageIndex={0}
+          visible={photoVisible}
+          onRequestClose={() => setPhotoVisible(false)}
+          onLongPress={() => console.log('on long press')}
+          animationType='fade'
+        />
       </View>
     </ScreenTemplate>
   )
